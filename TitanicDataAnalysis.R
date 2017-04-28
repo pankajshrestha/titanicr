@@ -15,3 +15,27 @@ str(data.combined)
 
 data.combined$Survived <- as.factor(data.combined$Survived)
 data.combined$Pclass <- as.factor(data.combined$Pclass)
+
+#Take a look at gross survival rates
+table(data.combined$Survived)
+
+
+# Distrbution across classes
+table(data.combined$Pclass)
+
+# Load up ggplot2 package to use vizualization
+
+library(ggplot2)
+
+# Hyphothesis - Rich folks survived at a higher rate
+train$Pclass <- as.factor(train$Pclass)
+
+str(train)
+
+ggplot(train, aes(x = Pclass, fill = factor(Survived))) + 
+  geom_bar(width = 0.5) +
+  xlab("Plcass") +
+  ylab("Total Count") +
+  labs(fill = "Survived")
+  
+
